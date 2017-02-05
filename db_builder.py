@@ -6,7 +6,7 @@
 from pymongo import MongoClient
 import csv
 
-c=MongoClient("lisa.stuy.edu", 27017)
+c=MongoClient()
 ourDB=c.MongoMadness
 
 peeps = open("peeps.csv")
@@ -15,6 +15,7 @@ students=csv.DictReader(peeps)
 
 courses = open("courses.csv")
 classes=csv.DictReader(courses)
+
 
 
 for student in students:
@@ -26,6 +27,3 @@ for student in students:
     courses.seek(0)
     ourDB.students.insert_one(student)
     print student
-    
-
-#ourDB.students.insert_many(students)
