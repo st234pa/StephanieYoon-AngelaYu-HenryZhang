@@ -1,13 +1,22 @@
-from pymongo import MongoClient
+#from pymongo import MongoClient
 import csv
 
-c=MongoClient("lisa.stuy.edu", 27017)
-ourDB=c.MongoMadness
+#c=MongoClient("lisa.stuy.edu", 27017)
+#ourDB=c.MongoMadness
 
 peeps = open("peeps.csv")
 students=csv.DictReader(peeps)
-#ourDB.peeps.insert_one(students)
 
 courses = open("courses.csv")
 classes=csv.DictReader(courses)
-#ourDB.courses.insert_one(classes)
+
+for student in students:
+    #adds grade info to student info from peeps, each code (class) is now a dict key with the value being the mark (grade)
+    for course in classes:
+        if student["id"]==course["id"]:
+            student[course["code"]]=course["mark"]
+    #reset cursor? so courses can be iterated again
+    courses.seek(0)
+    print student
+
+#ourDB.students.insert_many(students)
