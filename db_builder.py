@@ -24,7 +24,8 @@ for student in students:
             student[course["code"]]=course["mark"]
     #reset cursor? so courses can be iterated again
     courses.seek(0)
+    ourDB.students.insert_one(student)
     print student
     
 
-ourDB.students.insert_many(students)
+#ourDB.students.insert_many(students)
