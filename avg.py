@@ -15,7 +15,7 @@ for student in students:
     num = 0.0
     for course in grades:
         total += course.value()
-        num++
+        num+=1
     student['avg'] = total / num
     print student['name']
     print student['id']
