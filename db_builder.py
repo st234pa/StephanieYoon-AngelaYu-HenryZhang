@@ -26,7 +26,6 @@ for student in students:
             student['grades'][course["code"]] = course["mark"]
     #reset cursor? so courses can be iterated again
     courses.seek(0)
-    ourDB.students.insert_one(student)
     print student
-
+    ourDB.insert_one(student)
 
