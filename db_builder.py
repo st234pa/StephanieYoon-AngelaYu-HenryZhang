@@ -6,7 +6,7 @@
 from pymongo import MongoClient
 import csv
 
-c=MongoClient()
+c=MongoClient("lisa.stuy.edu", 27017)
 ourDB=c.MongoMadness
 
 peeps = open("peeps.csv")
