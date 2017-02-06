@@ -1,7 +1,7 @@
 #Stephanie Yoon, Angela Yu, Henry Zhang
 #SoftDev2 pd8
-#HW1 -- And Papayas
-#2017-02-06   
+#HW2 -- You Boys Like Mexico?
+#2017-02-07   
 
 from pymongo import MongoClient
 
