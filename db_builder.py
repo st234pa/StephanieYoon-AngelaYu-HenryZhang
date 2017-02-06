@@ -27,5 +27,5 @@ for student in students:
     #reset cursor? so courses can be iterated again
     courses.seek(0)
     print student
-    ourDB.insert_one(student)
+    ourDB.students.insert_one(student)
 
