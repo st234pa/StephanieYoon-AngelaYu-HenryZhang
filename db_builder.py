@@ -20,10 +20,13 @@ classes=csv.DictReader(courses)
 
 for student in students:
     #adds grade info to student info from peeps, each code (class) is now a dict key with the value being the mark (grade)
+    student['grades'] = {}
     for course in classes:
         if student["id"]==course["id"]:
-            student[course["code"]]=course["mark"]
+            student['grades'][course["code"]] = course["mark"]
     #reset cursor? so courses can be iterated again
     courses.seek(0)
     ourDB.students.insert_one(student)
     print student
+
+
