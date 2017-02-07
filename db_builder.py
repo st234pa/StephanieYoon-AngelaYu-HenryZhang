@@ -16,7 +16,8 @@ students=csv.DictReader(peeps)
 courses = open("courses.csv")
 classes=csv.DictReader(courses)
 
-
+oldpeeps = open("teachers.csv")
+teachers = csv.DictReader(oldpeeps)
 
 for student in students:
     #adds grade info to student info from peeps, each code (class) is now a dict key with the value being the mark (grade)
@@ -28,4 +29,19 @@ for student in students:
     courses.seek(0)
     print student
     ourDB.students.insert_one(student)
+
+students_collection = ourDB.students.find()
+
+for student in students_collection:
+    schedule = student["grades"].keys()
+    for pd in schedule:
+        for sage in teachers:
+            sage["roster"]= []
+            if pd == sage["code"]:
+                sage["roster"].append(student["id"])
+            ourDB.teachers.insert_one(sage)
+    
+
+            
+        
 
