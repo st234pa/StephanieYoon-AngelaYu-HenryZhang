@@ -8,7 +8,7 @@ from pymongo import MongoClient
 c=MongoClient("lisa.stuy.edu", 27017)
 ourDB=c.MongoMadness
 
-students = ourDB.find()
+students = ourDB.students.find()
 
 for student in students:
     total = 0
