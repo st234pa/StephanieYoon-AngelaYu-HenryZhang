@@ -32,14 +32,16 @@ for student in students:
 
 students_collection = ourDB.students.find()
 
-for student in students_collection:
+for sage in teachers:
+            sage["roster"]= []
+    for student in students_collection:
     schedule = student["grades"].keys()
     for pd in schedule:
-        for sage in teachers:
-            sage["roster"]= []
+        
             if pd == sage["code"]:
                 sage["roster"].append(student["id"])
             ourDB.teachers.insert_one(sage)
+            print sage
     
 
             
