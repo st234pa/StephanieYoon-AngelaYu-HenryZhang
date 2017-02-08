@@ -1,7 +1,7 @@
 #Stephanie Yoon, Angela Yu, Henry Zhang
 #SoftDev2 pd8
 #HW1 -- And Papayas
-#2017-02-06   
+#2017-02-06
 
 from pymongo import MongoClient
 import csv
@@ -37,13 +37,7 @@ for sage in teachers:
     for student in students_collection:
         schedule = student["grades"].keys()
         for pd in schedule:
-            
             if pd == sage["code"]:
                 sage["roster"].append(student["id"])
-                ourDB.teachers.insert_one(sage)
-                print sage
-                
-
-            
-        
-
+    ourDB.teachers.insert_one(sage)
+    print sage
