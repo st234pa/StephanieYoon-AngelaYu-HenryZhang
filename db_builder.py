@@ -12,7 +12,6 @@ ourDB=c.MongoMadness
 peeps = open("peeps.csv")
 students=csv.DictReader(peeps)
 
-
 courses = open("courses.csv")
 classes=csv.DictReader(courses)
 
@@ -35,9 +34,10 @@ students_collection = ourDB.students.find()
 for sage in teachers:
     sage["roster"]= []
     for student in students_collection:
-        schedule = student["grades"].keys()
+        schedule =student["grades"].keys()
         for pd in schedule:
             if pd == sage["code"]:
                 sage["roster"].append(student["id"])
-    ourDB.teachers.insert_one(sage)
+                print student
     print sage
+    ourDB.teachers.insert_one(sage)
